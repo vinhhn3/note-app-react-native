@@ -1,20 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from "react-native";
+import CreateNote from "./components/CreateNote";
+import NoteList from "./components/NoteList";
+import { NotesProvider } from "./context/NotesContext";
 
-export default function App() {
+export default () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NotesProvider>
+      <View style={styles.container}>
+        <Text style={styles.title}>My Notes</Text>
+        <CreateNote />
+        <NoteList />
+      </View>
+    </NotesProvider>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 20,
+    paddingTop: 60,
+    backgroundColor: "#f5f5f5",
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: "bold",
+    marginBottom: 20,
   },
 });
